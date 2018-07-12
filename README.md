@@ -9,7 +9,7 @@ This repository is maintained by Cowboysdude
 
 ## Examples
 
-![](examples/1.png) ![](examples/2.png)  ![](examples/3.png)
+See below!!  
 
 * Automatically adjusts language and all other settings based on your config.js!
 
