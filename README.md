@@ -116,9 +116,9 @@ You can add this to your config.js to change it if you'd like ... like this ->
 
 * You can choose one of 4 styles [colors] for NOAA3
 
-1 = NOAA1 (Color style #1)
-2 = NOAA2 (Color style #2)
-3 = NOAA3 (Color style #3)
-4 = NOAA4 (Changes colors)
+NOAA1 (Color style #1)
+NOAA2 (Color style #2)
+NOAA3 (Color style #3)
+NOAA4 (Changes colors)
 
 ## Start your mirror . . . enjoy! 
