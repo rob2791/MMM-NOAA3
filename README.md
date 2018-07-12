@@ -52,15 +52,15 @@ Will default to EN if NO translation file is found.
 * yahoo
     
 * For all of them EXCEPT YAHOO and WEATHERUNLOCKED
-    {
+        {
         module: 'MMM-NOAA3',
         config: {
 		    provider: "must be in quotes", // From list above
 		    apiKey: "YOUR API KEY",        // From one of the providers listed above
 		    airKey: "YOUR API KEY",    
 	        css: "NOAA3"                   // THIS MUST CONTAIN A CSS STYLE NAME 
-	}
-    },
+	 }
+         },
 	
 * WeatherUnlocked API Example:
 	
@@ -72,8 +72,8 @@ Will default to EN if NO translation file is found.
 		    appID: "YOUR APP ID",  
 		    airKey: "YOUR API KEY", 
 	        css: "NOAA3"                  // THIS MUST CONTAIN A CSS STYLE NAME
-	}
-    },
+	 }
+         },
 	
 * Yahoo Example:
 	
