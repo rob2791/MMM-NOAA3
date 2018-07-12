@@ -117,8 +117,16 @@ You can add this to your config.js to change it if you'd like ... like this ->
 * You can choose one of 4 styles [colors] for NOAA3
 
 NOAA1 (Color style #1)
-NOAA2 (Color style #2)
-NOAA3 (Color style #3)
-NOAA4 (Changes colors)
 
+
+NOAA2 (Color style #2)
+
+
+NOAA3 (Color style #3)
+
+
+
+
+NOAA4 (Changes colors)
+![](examples/41.png) ![](examples/42.png) ![](examples/43.png) ![](examples/44.png) ![](examples/45.png)
 ## Start your mirror . . . enjoy! 
