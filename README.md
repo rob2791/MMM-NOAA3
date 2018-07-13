@@ -137,4 +137,22 @@ You can add this to your config.js to change it if you'd like ... like this ->
 ## What's the mouseover?
 Now when you mouse over current temp at the top you'll get your forecast.....
 When you mouseover on the 4 day forecast you'll get your forecast for that day ....(see NOAA4 example above)..  
+
+##Custom CSS
+What if I want just plain ole white?  
+Well just go to your css directory in MagicMirror2 and open up the css directory and edit your custom.css file like this!  
+ ```
+  .MMM-NOAA3 .rheading {
+     background-color:  #000;
+     border: none;
+     }
+     ```
+     and  
+     ```
+     .MMM-NOAA3  .divTableHead {
+        color: #fff;
+	}  
+	```  
+That will give you plain old white headings OR pick any color style you want!!  :)  
+     
 ## Start your mirror . . . enjoy! 
