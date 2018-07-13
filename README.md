@@ -116,17 +116,17 @@ You can add this to your config.js to change it if you'd like ... like this ->
 
 * You can choose one of 4 styles [colors] for NOAA3
 
-##NOAA1 (Color style #1)  
+## NOAA1 (Color style #1)  
 ![](examples/1.png) 
 
-##NOAA2 (Color style #2)  
+## NOAA2 (Color style #2)  
 ![](examples/2.png) 
 
-##NOAA3 (Color style #3)  
+## NOAA3 (Color style #3)  
 ![](examples/3.png) 
 
 
-##NOAA4 (Changes colors automatically)  
+## NOAA4 (Changes colors automatically)  
 
 ![](examples/41.png) 
 ![](examples/42.png) 
