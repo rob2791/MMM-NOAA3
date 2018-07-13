@@ -134,5 +134,7 @@ You can add this to your config.js to change it if you'd like ... like this ->
 ![](examples/44.png) 
 ![](examples/45.png)
 
-
+## What's the mouseover?
+Now when you mouse over current temp at the top you'll get your forecast.....
+When you mouseover on the 4 day forecast you'll get your forecast for that day ....(see NOAA4 example above)..  
 ## Start your mirror . . . enjoy! 
