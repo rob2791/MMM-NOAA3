@@ -146,12 +146,9 @@ Well just go to your css directory in MagicMirror2 and open up the css directory
      background-color:  #000;
      border: none;
      }
-     ```
-     and  
-     ```
-     .MMM-NOAA3  .divTableHead {
-        color: #fff;
-	}  
+  .MMM-NOAA3  .divTableHead {
+      color: #fff;
+     }  
 	```  
 That will give you plain old white headings OR pick any color style you want!!  :)  
      
