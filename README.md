@@ -150,6 +150,7 @@ Well just go to your css directory in MagicMirror2 and open up the css directory
       color: #fff;
      }  
 ```  
-That will give you plain old white headings OR pick any color style you want!!  :)  
+That will give you plain old white headings OR pick any color style you want!!  :) Like this->  
+![](examples/plain.png)
      
 ## Start your mirror . . . enjoy! 
