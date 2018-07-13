@@ -52,7 +52,7 @@ Will default to EN if NO translation file is found.
 * yahoo
     
 * For all of them EXCEPT YAHOO and WEATHERUNLOCKED
-        {
+     ```   {
         module: 'MMM-NOAA3',
         config: {
 		    provider: "must be in quotes", // From list above
@@ -61,9 +61,9 @@ Will default to EN if NO translation file is found.
 	        css: "NOAA3"                   // THIS MUST CONTAIN A CSS STYLE NAME 
 	 }
          },
-	
+	```
 * WeatherUnlocked API Example:
-	
+	```
 	  {
         module: 'MMM-NOAA3',
         config: {
@@ -74,9 +74,9 @@ Will default to EN if NO translation file is found.
 	        css: "NOAA3"                  // THIS MUST CONTAIN A CSS STYLE NAME
 	 }
          },
-	
+	```
 * Yahoo Example:
-	
+	```
 	 {
         module: 'MMM-NOAA3',
         config: {
@@ -85,7 +85,7 @@ Will default to EN if NO translation file is found.
 	        css: "NOAA3"                 // THIS MUST CONTAIN A CSS STYLE NAME 
 	}
     },
-	
+	```
 	
 ## ISSUES
 
