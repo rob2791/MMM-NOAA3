@@ -22,6 +22,7 @@ See below!!
 ## Get your free API key here [WEATHER, You must also get an AirAPI Key--- see below]
 
 There are multiple providers to choose from:  You only need one api from one of these providers below:
+Remember not all providers are created equal... Some are a bit better than others :)
 
 * weatherbit ~ https://www.weatherbit.io/api
 * darksky ~ https://darksky.net/dev
