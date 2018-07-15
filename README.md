@@ -50,7 +50,7 @@ Will default to EN if NO translation file is found.
 * weatherunlocked 
 * accuweather  
 * openweather 
-* yahoo
+* yahoo  [ONLY works for English language at the moment]
     
 * For all of them EXCEPT YAHOO and WEATHERUNLOCKED
      ```   {
