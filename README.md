@@ -155,4 +155,4 @@ That will give you plain old white headings OR pick any color style you want!!  
 ![](examples/plain.png)
      
 ## Start your mirror . . . enjoy! 
-  The first time you run it .....you will get an error.  It needs to find your lat/lon.  The 1st time you run it is when it finds it.....after that it will work without issue :)
+  The first time you run it .....you may get an error.  It needs to find your lat/lon.  The 1st time you run it is when it finds it.....after that it will work without issue :)
