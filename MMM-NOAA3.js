@@ -75,7 +75,8 @@ Module.register("MMM-NOAA3", {
             fr: "translations/fr.json",
             zh_cn: "translations/zh_cn.json",
             nl: "translations/nl.json",
-            nb: "translations/nb.json"
+            nb: "translations/nb.json",
+	    it: "translations/it.json"
         };
 
     },
@@ -286,7 +287,7 @@ Module.register("MMM-NOAA3", {
       <div class="divTableRow">
          <div class="divTableHead">AQI</div>
          <div class="divTableHead">${(done >= str1 && done <= str2) ? "UV": this.translate("Night")}</div>
-         <div class="divTableHead">Wind</div>
+         <div class="divTableHead">${this.translate("Wind")}</div>
       </div>
       <div class="divTableRow">
        <div class="divTableCell CellWithComment">
