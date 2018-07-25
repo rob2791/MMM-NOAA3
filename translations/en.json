@@ -1,7 +1,6 @@
 {
-  "Atmospheric Conditions" : "Atmospheric Conditions",
-"Sunrise/Sunset":"Sunrise/Sunset",
-"AQI/UV/Wind":"AQI/UV/Wind",
+"Rise":"Rise",
+"Set":"Set", 
 "4 Day Forecast":"4 Day Forecast",
 "Monday": "Monday",
 "Tuesday": "Tuesday",
@@ -13,6 +12,7 @@
 "Hours of Light":"Daylight",
 "Last Updated": "Last Updated",
 "Today":"Today",
+"Night":"Night",
 "Mon":"Mon",
 "Tue":"Tue",
 "Wed":"Wed",
@@ -20,8 +20,14 @@
 "Fri":"Fri",
 "Sat":"Sat",
 "Sun":"Sun",
-"No Wind":"No Wind",
+"No Wind": "No Wind",
 "Humidity": "Humidity",
 "Visibility":"Visibility",
-"Pressure":"Pressure"
+"Pressure":"Pressure",
+"Excellent":"Excellent",
+"Good":"Good",
+"Lightly Polluted":"Lightly Polluted",
+"Moderately Polluted":"Moderately Polluted",
+"Heavily Polluted":"Heavily Polluted",
+"Forecast":"Forecast"
 }
