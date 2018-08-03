@@ -23,5 +23,8 @@
 "No Wind":"Ingen vind",
 "Humidity": "Luftfuktighet",
 "Visibility":"Synlighet",
-"Pressure":"Trykk"
+"Pressure":"Trykk",
+"Set":"Ned",
+"Rise":"Opp",
+"Wind":"Vind"
 }
