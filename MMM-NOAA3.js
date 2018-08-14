@@ -370,7 +370,7 @@ Module.register("MMM-NOAA3", {
                 var temper = document.createElement("td");
                 temper.setAttribute("colspan", "1");
                 temper.classList.add("xsmall");
-                temper.innerHTML = (config.units != "metric") ? noaa.high.fahrenheit + "/" + noaa.low.fahrenheit : noaa.high.celsius + "/" + noaa.low.celsius;
+                temper.innerHTML = (config.units != "metric") ? Math.round(noaa.high.fahrenheit) + "/" + Math.round(noaa.low.fahrenheit) : Math.round(noaa.high.celsius) + "/" + Math.round(noaa.low.celsius);
                 tempRow.appendChild(temper);
                 ForecastTable.appendChild(tempRow);
             }
