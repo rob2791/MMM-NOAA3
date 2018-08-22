@@ -55,6 +55,7 @@ Will default to EN if NO translation file is found.
 * For all of them EXCEPT YAHOO and WEATHERUNLOCKED
      ```   {
         module: 'MMM-NOAA3',
+	position: 'top_left',
         config: {
 		    provider: "must be in quotes", // From list above
 		    apiKey: "YOUR API KEY",        // From one of the providers listed above
@@ -67,6 +68,7 @@ Will default to EN if NO translation file is found.
 	```
 	  {
         module: 'MMM-NOAA3',
+	position: 'top_left',
         config: {
 		    provider: "weatherunlocked",       
 		    apiKey: "YOUR API KEY",  
@@ -80,6 +82,7 @@ Will default to EN if NO translation file is found.
 	```
 	 {
         module: 'MMM-NOAA3',
+	position: 'top_left',
         config: {
 		    provider: "Yahoo",   
 		    airKey: "YOUR API KEY", 
