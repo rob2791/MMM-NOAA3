@@ -61,6 +61,8 @@ Will default to EN if NO translation file is found.
 		    apiKey: "YOUR API KEY",        // From one of the providers listed above
 		    airKey: "YOUR API KEY",    
 	        css: "NOAA3"                   // THIS MUST CONTAIN A CSS STYLE NAME 
+		userlat: "xxxx", //overrides the default geolocation with a more precise lat and lon
+	        userlon: "xxxx"
 	 }
          },
 	```
