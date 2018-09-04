@@ -31,6 +31,8 @@
          }
            this.config.apiKey = moduleConfig.apiKey;
  		   this.config.airKey = moduleConfig.airKey;
+		   this.config.userlat = moduleConfig.userlat;
+		   this.config.userlon = moduleConfig.userlon;
 		   var text = fs.readFileSync('modules/MMM-NOAA3/latlon.json','utf8')
            var info = JSON.parse(text);
 		   lat = info.lat;
@@ -41,7 +43,12 @@
 
       getData: function(callback) {
 		 var self = this;
-		  url = "https://api.darksky.net/forecast/"+this.config.apiKey+"/"+lat+","+lon+"?lang="+config.language;
+		 if (self.config.userlat !== ""){
+		 url = "https://api.darksky.net/forecast/"+this.config.apiKey+"/"+this.config.userlat+","+this.config.userlon+"?lang="+config.language;	 
+		 } else {
+		 url = "https://api.darksky.net/forecast/"+this.config.apiKey+"/"+lat+","+lon+"?lang="+config.language;
+		 }
+		 
          request(url, function (error, response, body) {
              if (error) {
                  console.log("Error: " + err.message);
