@@ -25,7 +25,7 @@ There are multiple providers to choose from:  You only need one api from one of 
 Remember not all providers are created equal... Some are a bit better than others :)
 
 * weatherbit ~ https://www.weatherbit.io/api
-* darksky ~ https://darksky.net/dev
+* darksky ~ https://darksky.net/dev  //[userlat and userlong ONLY work with this right now]
 * apixu ~ https://www.apixu.com/
 * weatherunlocked ~ https://developer.weatherunlocked.com/   [provides both api and appid keys, need them both, see example]
 * accuweather ~ https://developer.accuweather.com/
