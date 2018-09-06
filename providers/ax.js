@@ -69,6 +69,8 @@ var lat, lon, city, zip;
          } 
            this.config.apiKey = moduleConfig.apiKey;
  		   this.config.airKey = moduleConfig.airKey;
+		   this.config.userlat = moduleConfig.userlat;
+		   this.config.userlon = moduleConfig.userlon;
  		   var text = fs.readFileSync('modules/MMM-NOAA3/latlon.json')
            var info = JSON.parse(text);
 		   lat = info.lat;
@@ -93,7 +95,7 @@ var lat, lon, city, zip;
 
     getAIR: function(callback) {
         var self = this;
-        url = "http://api.airvisual.com/v2/nearest_city?lat="+lat+"&lon="+lon+"&rad=100&key="+this.config.airKey
+        url = "http://api.airvisual.com/v2/nearest_city?lat="+this.config.userlat+"&lon="+this.config.userlon+"&rad=100&key="+this.config.airKey
         //+this.config.airKey;
         request(url, function(error, response, body) {
             if (error) {
@@ -126,7 +128,8 @@ var lat, lon, city, zip;
 	
 	getSRSS: function(callback) {
          var self = this;
-         url = "https://api.sunrise-sunset.org/json?lat="+lat+"&lng="+lon+"&formatted=0";
+         url = "https://api.sunrise-sunset.org/json?lat="+this.config.userlat+"&lng="+this.config.userlon+"&formatted=0";
+		 console.log(url);
          request(url, function(error, response, body) {
              if (error) {
                  console.log("Error: " + err.message);

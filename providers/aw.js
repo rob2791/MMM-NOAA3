@@ -62,6 +62,8 @@ var provider = {
          } 
            this.config.apiKey = moduleConfig.apiKey;
  		   this.config.airKey = moduleConfig.airKey;
+		   this.config.userlat = moduleConfig.userlat;
+		   this.config.userlon = moduleConfig.userlon;
 		   var text = fs.readFileSync('modules/MMM-NOAA3/latlon.json','utf8')
            var info = JSON.parse(text);
 		   lat = info.lat;
@@ -97,7 +99,7 @@ var provider = {
    
    getSRSS: function(callback) {
          var self = this;
-         url = "https://api.sunrise-sunset.org/json?lat="+lat+"&lng="+lon+"&formatted=0";
+         url = "https://api.sunrise-sunset.org/json?lat="+this.config.userlat+"&lng="+this.config.userlon+"&formatted=0";
          request(url, function(error, response, body) {
              if (error) {
                  console.log("Error: " + err.message);
@@ -109,7 +111,7 @@ var provider = {
 
     getAIR: function(callback) {
         var self = this;
-        url = "http://api.airvisual.com/v2/nearest_city?lat=" + lat + "&lon=" + lon + "&rad=100&key="+this.config.airKey;
+        url = "http://api.airvisual.com/v2/nearest_city?lat=" + this.config.userlat + "&lon=" + this.config.userlon + "&rad=100&key="+this.config.airKey;
         //+this.config.airKey;
         request(url, function(error, response, body) {
             if (error) {
@@ -122,7 +124,7 @@ var provider = {
 
     getALERT: function(callback) {
         var self = this;
-        url = "https://api.weather.gov/alerts?point="+lat+","+lon
+        url = "https://api.weather.gov/alerts?point="+this.config.userlat+","+this.config.userlon
         request(url, function(error, response, body) {
             if (error) {
                 console.log("Error: " + err.message);
@@ -135,8 +137,8 @@ var provider = {
 	
 	parseForecast: function(response) {
 		var self = this;
-        var results = JSON.parse(response);
-	//forecast = []; 
+        var results = JSON.parse(response); 
+	
          for (var i = 1; i < results.DailyForecasts.length; i++) {
              forecast[i] = results.DailyForecasts[i];
 		   

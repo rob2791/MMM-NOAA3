@@ -5,7 +5,7 @@
 var request = require('request');
  const moment = require('moment');
   const fs = require('fs');
- var lat, lon, city, zip, current, UV;
+ var lat, lon, city, zip, current, UV, url;
 var forecast = [];
  
 var provider = { 
@@ -33,6 +33,8 @@ var provider = {
            this.config.apiKey = moduleConfig.apiKey;
  		   this.config.airKey = moduleConfig.airKey;
 		   this.config.units = moduleConfig.units;
+		   this.config.userlat = moduleConfig.userlat;
+		   this.config.userlon = moduleConfig.userlon;
 		   this.getForecast();
 		   this.getUV();
 		   var text = fs.readFileSync('modules/MMM-NOAA3/latlon.json','utf8')
@@ -41,24 +43,27 @@ var provider = {
 		   lon = info.lon;
 		   zip = info.zip;
 		   city = info.city;
-        }, 
-		
+        },
 		
 		getForecast: function() {
         var self = this;
+			url = "http://api.openweathermap.org/data/2.5/forecast/daily?lat="+this.config.userlat+"&lon="+this.config.userlon+"&units=imperial&appid="+this.config.apiKey;
         request({
-           // url: "http://api.openweathermap.org/data/2.5/forecast/daily?lat="+lat+"&lon="+lon+"&units="+config.units+"&appid="+this.config.apiKey,
-			url: "http://api.openweathermap.org/data/2.5/forecast/daily?lat="+lat+"&lon="+lon+"&units=imperial&appid="+this.config.apiKey,
+		    url: url,
             method: 'GET'
         }, (error, response, body) => {
            self.parseForecast(body);
+		   console.log(url);
         });
     },	
 		
 	getUV: function() {
         var self = this;
+	 
+			url = "http://api.openweathermap.org/data/2.5/uvi?appid="+this.config.apiKey+"&lat="+this.config.userlat+"&lon="+this.config.userlon;
+		 
         request({
-			url: "http://api.openweathermap.org/data/2.5/uvi?appid="+this.config.apiKey+"&lat="+lat+"&lon="+lon,
+			url:  url,
             method: 'GET'
         }, (error, response, body) => {
            self.parseUV(body);
@@ -72,7 +77,9 @@ var provider = {
 
     getData: function(callback) {
         var self = this;
-		url =  "http://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lon+"&units="+config.units+"&appid="+this.config.apiKey+"&lang="+config.language;
+		
+			url =  "http://api.openweathermap.org/data/2.5/weather?lat="+this.config.userlat+"&lon="+this.config.userlon+"&units="+config.units+"&appid="+this.config.apiKey+"&lang="+config.language;
+			
         request(url, function(error, response, body) {
             if (error) {
                 console.log("Error: " + err.message);
@@ -84,7 +91,9 @@ var provider = {
 
    getSRSS: function(callback) {
          var self = this;
-         url = "https://api.sunrise-sunset.org/json?lat="+lat+"&lng="+lon+"&formatted=0";
+		  
+			 url = "https://api.sunrise-sunset.org/json?lat="+this.config.userlat+"&lng="+this.config.userlon+"&formatted=0";
+			 
          request(url, function(error, response, body) {
              if (error) {
                  console.log("Error: " + err.message);
@@ -96,7 +105,9 @@ var provider = {
 
     getAIR: function(callback) {
         var self = this;
-        url = "http://api.airvisual.com/v2/nearest_city?lat=" + lat + "&lon=" + lon + "&rad=100&key="+this.config.airKey;
+		 
+			url = "http://api.airvisual.com/v2/nearest_city?lat=" + this.config.userlat + "&lon=" + this.config.userlon + "&rad=100&key="+this.config.airKey;
+			 
         request(url, function(error, response, body) {
             if (error) {
                 console.log("Error: " + err.message);
@@ -169,7 +180,6 @@ var provider = {
 	
 	parseForecast: function(response) {
         var result = JSON.parse(response);
-		
 	   forecast = []; 
          for (var i = 0; i < result.list.length; i++) {
              forecast[i] = result.list[i];

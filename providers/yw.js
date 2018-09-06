@@ -65,6 +65,8 @@ var current;
             }
            this.config.apiKey = moduleConfig.apiKey;
  		   this.config.airKey = moduleConfig.airKey;
+		   this.config.userlat = moduleConfig.userlat;
+		   this.config.userlon = moduleConfig.userlon;
 		   this.config.lang = moduleConfig.language;
  		   var text = fs.readFileSync('modules/MMM-NOAA3/latlon.json','utf8')
            var info = JSON.parse(text);
@@ -77,7 +79,8 @@ var current;
     getData: function(callback) {
         var self = this;
 		url = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22"+city+"%2C%20ny%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
-        
+       
+		
 		request(url, function(error, response, body) {
             if (error) {
                 console.log("Error: " + err.message);
@@ -88,8 +91,9 @@ var current;
     },
 
     getSRSS: function(callback) {
-         var self = this;
-         url = "https://api.sunrise-sunset.org/json?lat="+lat+"&lng="+lon+"&formatted=0";
+         var self = this; 
+          url = "https://api.sunrise-sunset.org/json?lat="+this.config.userlat+"&lng="+this.config.userlon+"&formatted=0";
+		console.log(url);
          request(url, function(error, response, body) {
              if (error) {
                  console.log("Error: " + err.message);
@@ -101,7 +105,7 @@ var current;
 
     getAIR: function(callback) {
         var self = this;
-        url = "http://api.airvisual.com/v2/nearest_city?lat=" + lat + "&lon=" + lon + "&rad=100&key="+this.config.airKey
+        url = "http://api.airvisual.com/v2/nearest_city?lat=" + this.config.userlat + "&lon=" + this.config.userlon + "&rad=100&key="+this.config.airKey
         //+this.config.airKey;
         request(url, function(error, response, body) {
             if (error) {
@@ -220,7 +224,6 @@ var current;
              forecast[i] = Object.assign(forecast[i], low);
 			 forecast.push(forecast[i]);
              forecast = forecast.slice(0, 4);
-	
 	};
 		
      current = {

@@ -59,6 +59,8 @@ var lat, lon, zip, city;
          }
            this.config.apiKey = moduleConfig.apiKey;
  		   this.config.airKey = moduleConfig.airKey;
+		   this.config.userlat = moduleConfig.userlat;
+		   this.config.userlon = moduleConfig.userlon;
 		   var text = fs.readFileSync('modules/MMM-NOAA3/latlon.json','utf8')
            var info = JSON.parse(text);
 		   lat = info.lat;
@@ -69,7 +71,7 @@ var lat, lon, zip, city;
 	
      getData: function(callback) {
 		 var self = this;
-		   url = "https://api.weatherbit.io/v2.0/forecast/daily?lat="+lat+"&lon="+lon+"&days=4&units=I&key="+this.config.apiKey+"&lang="+config.language;
+		   url = "https://api.weatherbit.io/v2.0/forecast/daily?lat="+this.config.userlat+"&lon="+this.config.userlon+"&days=4&units=I&key="+this.config.apiKey+"&lang="+config.language;
          request(url, function (error, response, body) {
              if (error) {
                  console.log("Error: " + err.message);
@@ -159,7 +161,7 @@ var lat, lon, zip, city;
      getSRSS: function(callback) {
         var self = this;
         //console.log("working "+this.lat2+" "+this.lon2);
-        url = "https://api.sunrise-sunset.org/json?lat="+lat+"&lng="+lon+"&formatted=0";
+        url = "https://api.sunrise-sunset.org/json?lat="+this.config.userlat+"&lng="+this.config.userlon+"&formatted=0";
         request(url, function(error, response, body) {
             if (error) {
                 console.log("Error: " + error.message);
@@ -183,7 +185,7 @@ var lat, lon, zip, city;
 
     getAIR: function(callback) {
         var self = this;
-        url = "http://api.airvisual.com/v2/nearest_city?lat="+lat+"&lon="+lon+"&rad=100&key="+this.config.airKey
+        url = "http://api.airvisual.com/v2/nearest_city?lat="+this.config.userlat+"&lon="+this.config.userlon+"&rad=100&key="+this.config.airKey
         //+this.config.airKey;
         request(url, function(error, response, body) {
             if (error) {
