@@ -31,8 +31,11 @@ Remember not all providers are created equal... Some are a bit better than other
 * accuweather ~ https://developer.accuweather.com/
 * openweather ~ https://openweathermap.org/api
 * yahoo [NO API key needed for this one]
-
-
+ 
+##    YOU WILL NEED YOUR LATITUDE AND LONGITUDE
+ You can find them right here: 
+        https://www.latlong.net/
+ 
 ## Get your AirKEY from here
 
 [https://airvisual.com/api](https://airvisual.com/api)
@@ -61,8 +64,8 @@ Will default to EN if NO translation file is found.
 		    apiKey: "YOUR API KEY",        // From one of the providers listed above
 		    airKey: "YOUR API KEY",    
 	        css: "NOAA3"                   // THIS MUST CONTAIN A CSS STYLE NAME 
-		userlat: "xxxx", //overrides the default geolocation with a more precise lat and lon
-	        userlon: "xxxx"
+		userlat: "xxxx", //MUST HAVE BOTH
+	        userlon: "xxxx"  //MUST HAVE BOTH
 	 }
          },
 	```
@@ -77,6 +80,8 @@ Will default to EN if NO translation file is found.
 		    appID: "YOUR APP ID",  
 		    airKey: "YOUR API KEY", 
 	        css: "NOAA3"                  // THIS MUST CONTAIN A CSS STYLE NAME
+		userlat: "xxxx", //MUST HAVE BOTH
+	        userlon: "xxxx"  //MUST HAVE BOTH
 	 }
          },
 	```
@@ -89,6 +94,8 @@ Will default to EN if NO translation file is found.
 		    provider: "Yahoo",   
 		    airKey: "YOUR API KEY", 
 	        css: "NOAA3"                 // THIS MUST CONTAIN A CSS STYLE NAME 
+		userlat: "xxxx", //MUST HAVE BOTH
+	        userlon: "xxxx"  //MUST HAVE BOTH
 	}
     },
 	```
@@ -115,6 +122,8 @@ You can add this to your config.js to change it if you'd like ... like this ->
 		    airKey: "YOUR API KEY", 
 	        css: "NOAA3",   // THIS MUST CONTAIN A CSS STYLE NAME
 		    updateInterval: 15 * 60 * 1000 // every 15 minutes or whatever you choose but make sure you have an api that will allow that many calls per day!!! 
+		   userlat: "xxxx", //MUST HAVE BOTH
+	           userlon: "xxxx"  //MUST HAVE BOTH 
 	}
     },
 	
