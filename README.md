@@ -63,7 +63,7 @@ Will default to EN if NO translation file is found.
 		    provider: "must be in quotes", // From list above
 		    apiKey: "YOUR API KEY",        // From one of the providers listed above
 		    airKey: "YOUR API KEY",    
-	        css: "NOAA3"                   // THIS MUST CONTAIN A CSS STYLE NAME 
+	        css: "NOAA3",                   // THIS MUST CONTAIN A CSS STYLE NAME 
 		userlat: "xxxx", //MUST HAVE BOTH
 	        userlon: "xxxx"  //MUST HAVE BOTH
 	 }
@@ -79,7 +79,7 @@ Will default to EN if NO translation file is found.
 		    apiKey: "YOUR API KEY",  
 		    appID: "YOUR APP ID",  
 		    airKey: "YOUR API KEY", 
-	        css: "NOAA3"                  // THIS MUST CONTAIN A CSS STYLE NAME
+	        css: "NOAA3",                  // THIS MUST CONTAIN A CSS STYLE NAME
 		userlat: "xxxx", //MUST HAVE BOTH
 	        userlon: "xxxx"  //MUST HAVE BOTH
 	 }
@@ -93,7 +93,7 @@ Will default to EN if NO translation file is found.
         config: {
 		    provider: "Yahoo",   
 		    airKey: "YOUR API KEY", 
-	        css: "NOAA3"                 // THIS MUST CONTAIN A CSS STYLE NAME 
+	        css: "NOAA3",                 // THIS MUST CONTAIN A CSS STYLE NAME 
 		userlat: "xxxx", //MUST HAVE BOTH
 	        userlon: "xxxx"  //MUST HAVE BOTH
 	}
