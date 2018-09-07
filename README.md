@@ -121,7 +121,7 @@ You can add this to your config.js to change it if you'd like ... like this ->
 		    provider: "Yahoo",   
 		    airKey: "YOUR API KEY", 
 	        css: "NOAA3",   // THIS MUST CONTAIN A CSS STYLE NAME
-		    updateInterval: 15 * 60 * 1000 // every 15 minutes or whatever you choose but make sure you have an api that will allow that many calls per day!!! 
+		    updateInterval: 15 * 60 * 1000, // every 15 minutes or whatever you choose but make sure you have an api that will allow that many calls per day!!! 
 		   userlat: "xxxx", //MUST HAVE BOTH
 	           userlon: "xxxx"  //MUST HAVE BOTH 
 	}
