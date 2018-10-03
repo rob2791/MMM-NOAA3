@@ -28,13 +28,13 @@ module.exports = NodeHelper.create({
     start: function() {
         var self = this;
         setTimeout(function() {
-//console.log(self.config.updateInterval);
         });
     },
 
     socketNotificationReceived: function(notification, payload) {
         if (notification === "MMM-NOAA3") {
-            this.getLatLon();
+			this.sendSocketNotification('MMM-NOAA3');
+            //this.getLatLon();
             this.path = "modules/MMM-NOAA3/latlon.json";
             this.provider = this.getProviderFromConfig(payload);
             this.provider.addModuleConfiguration(payload);
@@ -42,6 +42,7 @@ module.exports = NodeHelper.create({
             this.getData();
             this.getSRSS();
             this.getAIR();
+			this.getMoonData();
         }
         this.scheduleUpdate(this.config.updateInterval);
     },
@@ -53,6 +54,7 @@ module.exports = NodeHelper.create({
             self.getData();
             self.getSRSS();
             self.getAIR();
+			self.getMoonData();
         }, self.config.updateInterval);
     },
 
@@ -76,10 +78,27 @@ module.exports = NodeHelper.create({
                 };
                 fs.writeFile(this.path, JSON.stringify(info),
                     function(error) {
-                        return console.log("");
+                        return console.log('NOAA_3 is running');
                     });
             }
         });
+    },
+	
+	getMoonData: function() {
+        var self = this;
+		var date = moment().format('M/D/YYYY');
+        request({
+            url: "http://api.usno.navy.mil/moon/phase?date="+date+"&nump=1",
+            method: 'GET'
+        }, (error, response, body) => {
+            if (self.provider) {
+                var moons = JSON.parse(body); 
+                var moon = moons.phasedata[0].phase; 
+                }; 
+				 self.sendSocketNotification("MOON_RESULT", moon ? moon : 'NO_MOON_DATA');
+                    });
+           // }
+       // });
     },
 
     getData: function() {
