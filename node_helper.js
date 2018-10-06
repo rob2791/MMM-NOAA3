@@ -42,6 +42,7 @@ module.exports = NodeHelper.create({
             this.getData();
             this.getSRSS();
             this.getAIR();
+	    this.getLatLon();
 			this.getMoonData();
         }
         this.scheduleUpdate(this.config.updateInterval);
@@ -54,6 +55,7 @@ module.exports = NodeHelper.create({
             self.getData();
             self.getSRSS();
             self.getAIR();
+	    self.getLatLon();
 			self.getMoonData();
         }, self.config.updateInterval);
     },
