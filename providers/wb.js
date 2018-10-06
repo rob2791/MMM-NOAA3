@@ -49,7 +49,7 @@ var lat, lon, zip, city;
             "801": "partlycloudy",
             "802": "partlycloudy",
             "803": "partlycloudy",
-			"804": "cloudy",
+			"804": "overcast",
             "900": "na"
         }, 
 		  

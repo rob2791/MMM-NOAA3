@@ -21,7 +21,7 @@ var provider = {
             "5": "hazy",
             "6": "mostlycloudy",
             "7": "cloudy",
-            "8": "mostlycloudy",
+            "8": "overcast",
 			"11": "fog",
             "12": "rain",
             "13": "chancerain",
@@ -192,7 +192,7 @@ var provider = {
 			 forecast.push(forecast[i]);
 		 };
 		  	 
-		  forecast = forecast.slice(1,5);
+		  forecast = forecast.slice(1,5); 
 		 return forecast;
     },
 

@@ -230,7 +230,7 @@ var current;
 			 current: {
 			     weather: result.item.condition.text,
                  temp_f: result.item.condition.temp,
-		 temp_c: toCelsius(result.item.condition.temp),
+				 temp_c: toCelsius(result.item.condition.temp),
                  icon: this.imageArray[result.item.condition.code],
                  relative_humidity: result.atmosphere.humidity+"%",
                  pressure_in: Math.round(result.atmosphere.pressure*0.02953),

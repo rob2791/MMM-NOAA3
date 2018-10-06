@@ -16,7 +16,7 @@ var lat, lon, city, zip;
    imageArray: {
             "Blizzard.gif": "snow",
             "Clear.gif": "clear",
-            "Overcast.gif": "mostlycloudy",
+            "Overcast.gif": "overcast",
             "partly-cloudy-night": "mostlycloudy",
             "Cloudy.gif": "cloudy",
 			"CloudRainThunder.gif":"tstorms",

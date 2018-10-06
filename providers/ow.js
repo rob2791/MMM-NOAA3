@@ -24,6 +24,7 @@ var provider = {
             "13d": "snow",
             "50d": "chancerain",
 			"03n": "mostlycloudy",
+			"800": "overcast",
         }, 
 		
 		   addModuleConfiguration: function(moduleConfig) {
@@ -53,7 +54,6 @@ var provider = {
             method: 'GET'
         }, (error, response, body) => {
            self.parseForecast(body);
-		   console.log(url);
         });
     },	
 		

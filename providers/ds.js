@@ -22,7 +22,8 @@
             "sleet": "sleet",
             "snow": "chancesnow",
             "wind": "na",
-            "fog": "fog"
+            "fog": "fog",
+			"overcast":"overcast"
         }, 
 		
 		  		  addModuleConfiguration: function(moduleConfig) {
