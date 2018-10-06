@@ -35,14 +35,14 @@ module.exports = NodeHelper.create({
         if (notification === "MMM-NOAA3") {
 			this.sendSocketNotification('MMM-NOAA3');
             //this.getLatLon();
-            this.path = "modules/MMM-NOAA3/latlon.json";
+            //this.path = "modules/MMM-NOAA3/latlon.json";
             this.provider = this.getProviderFromConfig(payload);
             this.provider.addModuleConfiguration(payload);
 			this.config = payload;
             this.getData();
             this.getSRSS();
             this.getAIR();
-	    this.getLatLon();
+			//this.getLatLon();
 			this.getMoonData();
         }
         this.scheduleUpdate(this.config.updateInterval);
@@ -55,12 +55,12 @@ module.exports = NodeHelper.create({
             self.getData();
             self.getSRSS();
             self.getAIR();
-	    self.getLatLon();
+			//self.getLatLon();
 			self.getMoonData();
         }, self.config.updateInterval);
     },
 
-    getLatLon: function() {
+  /*  getLatLon: function() {
         var self = this;
         request({
             url: "http://ip-api.com/json",
@@ -84,7 +84,7 @@ module.exports = NodeHelper.create({
                     });
             }
         });
-    },
+    }, */
 	
 	getMoonData: function() {
         var self = this;
