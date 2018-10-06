@@ -62,11 +62,12 @@ var lat, lon, zip, city;
 		   this.config.userlat = moduleConfig.userlat;
 		   this.config.userlon = moduleConfig.userlon;
 		   var text = fs.readFileSync('modules/MMM-NOAA3/latlon.json','utf8')
-           var info = JSON.parse(text);
+          /* var info = JSON.parse(text);
 		   lat = info.lat;
 		   lon = info.lon;
 		   zip = info.zip;
 		   city = info.city;
+		   */
         }, 
 	
      getData: function(callback) {

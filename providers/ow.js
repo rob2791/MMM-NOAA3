@@ -5,7 +5,7 @@
 var request = require('request');
  const moment = require('moment');
   const fs = require('fs');
- var lat, lon, city, zip, current, UV, url;
+ var lat, lon, city, zip, current, UV, url, units;
 var forecast = [];
  
 var provider = { 
@@ -38,17 +38,18 @@ var provider = {
 		   this.config.userlon = moduleConfig.userlon;
 		   this.getForecast();
 		   this.getUV();
-		   var text = fs.readFileSync('modules/MMM-NOAA3/latlon.json','utf8')
+		 /*  var text = fs.readFileSync('modules/MMM-NOAA3/latlon.json','utf8')
            var info = JSON.parse(text);
 		   lat = info.lat;
 		   lon = info.lon;
 		   zip = info.zip;
 		   city = info.city;
+		   */
         },
 		
 		getForecast: function() {
         var self = this;
-			url = "http://api.openweathermap.org/data/2.5/forecast/daily?lat="+this.config.userlat+"&lon="+this.config.userlon+"&units=imperial&appid="+this.config.apiKey;
+url = "http://api.openweathermap.org/data/2.5/forecast/daily?lat="+this.config.userlat+"&lon="+this.config.userlon+"&units="+this.config.units+"&appid="+this.config.apiKey;
         request({
 		    url: url,
             method: 'GET'

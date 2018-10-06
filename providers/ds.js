@@ -33,13 +33,7 @@
            this.config.apiKey = moduleConfig.apiKey;
  		   this.config.airKey = moduleConfig.airKey;
 		   this.config.userlat = moduleConfig.userlat;
-		   this.config.userlon = moduleConfig.userlon;
-		   var text = fs.readFileSync('modules/MMM-NOAA3/latlon.json','utf8')
-           var info = JSON.parse(text);
-		   lat = info.lat;
-		   lon = info.lon;
-		   zip = info.zip;
-		   city = info.city;
+		   this.config.userlon = moduleConfig.userlon; 
         }, 
 
       getData: function(callback) {

@@ -25,12 +25,13 @@ var current;
 		   this.config.userlon = moduleConfig.userlon;
 		   this.config.lang = moduleConfig.language;
 		   this.config.pws = moduleConfig.pws;
- 		   var text = fs.readFileSync('modules/MMM-NOAA3/latlon.json','utf8')
+ 		/*   var text = fs.readFileSync('modules/MMM-NOAA3/latlon.json','utf8')
            var info = JSON.parse(text);
 		   lat = info.lat;
 		   lon = info.lon;
 		   zip = info.zip;
 		   city = info.city;
+		   */
         },
 		
     getData: function(callback) {
