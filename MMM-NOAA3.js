@@ -4,6 +4,7 @@
  */
 
 var current = {};
+var srss;
 
 Module.register("MMM-NOAA3", {
     defaults: {
@@ -156,11 +157,7 @@ Module.register("MMM-NOAA3", {
         this.loaded = true;
     },
 	
-	 processWeather: function(data) {
-        this.current = data;
-		var weather = this.current.current.current;
-		this.sendNotification("WEATHER", weather );
-    },
+	 
 
     socketNotificationReceived: function(notification, payload) {
 		if (notification === "WEATHER_RESULT") {
@@ -184,6 +181,7 @@ Module.register("MMM-NOAA3", {
 
 	  processMOON: function(data) {
         this.moon = data; 
+		console.log(this.moon);
     },
 	
     processAIR: function(data) {
@@ -191,6 +189,17 @@ Module.register("MMM-NOAA3", {
     },
     processSRSS: function(data) {
         this.srss = data;
+		srss = this.srss;
+    },
+	
+	processWeather: function(data) {
+        this.current = data;
+		var weather = this.current.current.current;
+		if (typeof weather != 'undefined' && typeof srss != 'undefined'){
+			var icon = weather.weather;
+			var sunset = srss.sunset; 
+	    this.sendNotification("WEATHER", {icon , sunset });
+		}
     },
 	
     getDom: function() {
@@ -216,7 +225,7 @@ Module.register("MMM-NOAA3", {
             var wind_mph = Math.round(current.current.wind_mph);
             var wind_kph = Math.round(current.current.wind_kph);
         }
- 
+ console.log('this is from NOAA3 '+weather);
         var cweat = document.createElement("div");
         cweat.classList.add("small", "bright", "floatl");
         if (this.config.provider === 'openweather' && this.config.lang != 'en') {
@@ -280,7 +289,7 @@ Module.register("MMM-NOAA3", {
 				top.style.display="none";
 			};
 		
-		var srss = this.srss;
+		srss = this.srss;
         var sunrise = srss.sunrise;
         var sunset = srss.sunset;
         var utcsunrise = moment.utc(sunrise).toDate();
@@ -308,7 +317,7 @@ Module.register("MMM-NOAA3", {
 </div>`; 
 		 wrapper.appendChild(nextDiv);
 		 
-		 var time = new Date();
+		var time = new Date();
         var g = time.getHours();
         var m = time.getMinutes();
         var fun = g + ":" + m;
