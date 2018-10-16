@@ -71,18 +71,12 @@ var lat, lon, city, zip;
  		   this.config.airKey = moduleConfig.airKey;
 		   this.config.userlat = moduleConfig.userlat;
 		   this.config.userlon = moduleConfig.userlon;
- 		 /*  var text = fs.readFileSync('modules/MMM-NOAA3/latlon.json')
-           var info = JSON.parse(text);
-		   lat = info.lat;
-		   lon = info.lon;
-		   zip = info.zip;
-		   city = info.city;
-		   */
+ 		   this.config.city = moduleConfig.city;
         }, 
 
     getData: function(callback) {
         var self = this;
-          url = "http://api.apixu.com/v1/forecast.json?key="+this.config.apiKey+"&lang="+config.language+"&q="+city+"&days=5"
+          url = "http://api.apixu.com/v1/forecast.json?key="+this.config.apiKey+"&lang="+config.language+"&q="+this.config.city+"&days=5"
         request(url, function(error, response, body) {
             if (error) {
                 console.log("Error: " + err.message);
