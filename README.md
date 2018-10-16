@@ -115,6 +115,22 @@ Will default to EN if NO translation file is found.
     },	
 	```
 	
+* Apixu Example:
+	```
+	 {
+        module: 'MMM-NOAA3',
+	position: 'top_left',
+        config: {
+		provider: "accuweather",   
+		airKey: "YOUR API KEY", 
+	        css: "NOAA3",                 // THIS MUST CONTAIN A CSS STYLE NAME 
+		userlat: "xxxx", //MUST HAVE BOTH
+	        userlon: "xxxx"  //MUST HAVE BOTH
+		city: "elmira" //MUST have valid zip Code
+	}
+    },	
+	```	
+	
 	
 ## ISSUES
 
