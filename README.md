@@ -99,6 +99,22 @@ Will default to EN if NO translation file is found.
 	}
     },
 	```
+* Accuweather Example:
+	```
+	 {
+        module: 'MMM-NOAA3',
+	position: 'top_left',
+        config: {
+		provider: "accuweather",   
+		airKey: "YOUR API KEY", 
+	        css: "NOAA3",                 // THIS MUST CONTAIN A CSS STYLE NAME 
+		userlat: "xxxx", //MUST HAVE BOTH
+	        userlon: "xxxx"  //MUST HAVE BOTH
+		zip: "11111" //MUST have valid zip Code
+	}
+    },	
+	```
+	
 	
 ## ISSUES
 
