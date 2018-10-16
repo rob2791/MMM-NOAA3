@@ -56,6 +56,19 @@ var provider = {
             "44": "chancesnow"
         }, 
 		
+		langarray:{
+			"en":"en-us",
+			"de":"de-de",
+			"it":"it-it",
+            "da":"da-dk",
+            "es":"es-es",
+            "sv":"sv-se",
+            "nl":"nl-be",
+            "zh_cn":"zh-cn",
+            "fr":"fr-fr "	
+		},
+		
+		
 		 addModuleConfiguration: function(moduleConfig) {
                if(!moduleConfig.apiKey) {
                    throw new Error('Invalid config, No key for Apixu Provider');
@@ -63,7 +76,8 @@ var provider = {
            this.config.apiKey = moduleConfig.apiKey;
  		   this.config.airKey = moduleConfig.airKey;
 		   this.config.userlat = moduleConfig.userlat;
-		   this.config.userlon = moduleConfig.userlon; 
+		   this.config.userlon = moduleConfig.userlon;
+           this.config.zip = moduleConfig.zip;
 		   this.getFore();
         },
 		
@@ -71,9 +85,9 @@ var provider = {
 	 getFore: function() {
         var self = this;
         request({
-            url: "http://dataservice.accuweather.com/forecasts/v1/daily/5day/"+zip+"?apikey="+this.config.apiKey+"&language="+config.language+"-us&details=true&metric=false",
+            url: "http://dataservice.accuweather.com/forecasts/v1/daily/5day/"+this.config.zip+"?apikey="+this.config.apiKey+"&language="+this.langarray[config.language]+"&details=true&metric=false",
             method: 'GET'
-        }, (error, response, body) => {
+        }, (error, response, body) => { 
             self.parseForecast(body);
         });
     },	
@@ -81,7 +95,7 @@ var provider = {
 
     getData: function(callback) {
         var self = this;
-		url =  "http://dataservice.accuweather.com/currentconditions/v1/"+zip+"?apikey="+this.config.apiKey+"&details=true";
+		url =  "http://dataservice.accuweather.com/currentconditions/v1/"+this.config.zip+"?apikey="+this.config.apiKey+"&language="+this.langarray[config.language]+"&details=true";
         request(url, function(error, response, body) {
             if (error) {
                 console.log("Error: " + err.message);
