@@ -25,11 +25,12 @@ var provider = {
             "50d": "chancerain",
 			"03n": "mostlycloudy",
 			"800": "overcast",
+			"04n": "overcast",
         }, 
 		
 		   addModuleConfiguration: function(moduleConfig) {
                if(!moduleConfig.apiKey) {
-                   throw new Error('Invalid config, No key for Weatherbit');
+                   throw new Error('Invalid config, No key for OpenWeather');
          }
            this.config.apiKey = moduleConfig.apiKey;
  		   this.config.airKey = moduleConfig.airKey;
@@ -37,14 +38,7 @@ var provider = {
 		   this.config.userlat = moduleConfig.userlat;
 		   this.config.userlon = moduleConfig.userlon;
 		   this.getForecast();
-		   this.getUV();
-		 /*  var text = fs.readFileSync('modules/MMM-NOAA3/latlon.json','utf8')
-           var info = JSON.parse(text);
-		   lat = info.lat;
-		   lon = info.lon;
-		   zip = info.zip;
-		   city = info.city;
-		   */
+		   this.getUV(); 
         },
 		
 		getForecast: function() {
@@ -258,7 +252,7 @@ url = "http://api.openweathermap.org/data/2.5/forecast/daily?lat="+this.config.u
                }  
 		}
 		};
-		
+		console.log(result);
 		current = {current, forecast}; 
 		return current;
        
