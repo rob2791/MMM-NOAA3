@@ -10,7 +10,8 @@ Module.register("MMM-NOAA3", {
     defaults: {
         animationSpeed: 0,
         initialLoadDelay: 8000,
-        //updateInterval:5 * 1000,
+        rotateInterval: 60 * 1000,
+		//updateInterval: 10 * 1000,
 		updateInterval: 30 * 60 * 1000,
         apiKey: "",
         airKey: "",
@@ -154,6 +155,9 @@ Module.register("MMM-NOAA3", {
         this.current = {};
         this.today = "";
         this.aqius = {};
+		this.issue = {}; 
+        this.activeItem = 0;
+        this.rotateInterval = null; 
         this.loaded = true;
     },
 	
@@ -174,14 +178,16 @@ Module.register("MMM-NOAA3", {
         }
 		if (notification === "MOON_RESULT") {
             this.processMOON(payload);
-        }
+        }  
+		 if (this.rotateInterval == null) {
+                this.scheduleCarousel();
+            }
         this.updateDom();
         this.updateInterval;
     },
-
 	  processMOON: function(data) {
         this.moon = data; 
-		console.log(this.moon);
+//console.log(this.moon);		
     },
 	
     processAIR: function(data) {
@@ -190,21 +196,44 @@ Module.register("MMM-NOAA3", {
     processSRSS: function(data) {
         this.srss = data;
 		srss = this.srss;
+		//console.log(srss);
     },
 	
 	processWeather: function(data) {
         this.current = data;
 		var weather = this.current.current.current;
-		if (typeof weather != 'undefined' && typeof srss != 'undefined'){
-			var icon = weather.weather;
-			var sunset = srss.sunset; 
-	    this.sendNotification("WEATHER", {icon , sunset });
-		}
+			 icon = weather.icon;
+			 sunset = this.srss.sunset;
+	    this.sendNotification("WEATHER", {icon , sunset});
+		 this.loaded = true;
+		//console.log('Icon and Sunset sent: '+ icon +"  " +sunset);
     },
 	
+	processALERT: function(data) {
+        this.issue = data.alerts;  
+    },
+	
+	scheduleCarousel: function() {
+        this.rotateInterval = setInterval(() => {
+            this.activeItem++;
+            this.updateDom();
+        }, this.config.rotateInterval);
+    },
+	
+	
     getDom: function() {
+		
+		 if (!this.loaded) {
+            wrapper.classList.add("container");
+            wrapper.innerHTML = "Gathering your weather info..";
+            wrapper.className = "bright small";
+            return wrapper;
+        }
+		
+		
         var wrapper = document.createElement("div");
         var current = this.current.current;
+//console.log(current);
         var d = new Date();
         var n = d.getHours();
  
@@ -225,7 +254,7 @@ Module.register("MMM-NOAA3", {
             var wind_mph = Math.round(current.current.wind_mph);
             var wind_kph = Math.round(current.current.wind_kph);
         }
- console.log('this is from NOAA3 '+weather);
+ //console.log('this is from NOAA3 '+weather);
         var cweat = document.createElement("div");
         cweat.classList.add("small", "bright", "floatl");
         if (this.config.provider === 'openweather' && this.config.lang != 'en') {
@@ -249,7 +278,6 @@ Module.register("MMM-NOAA3", {
         x.className = x.className.replace(" w3-show", "");
     }
      }
-		
 
         var cur = document.createElement("div");
         cur.classList.add("tempf", "tooltip");
@@ -294,8 +322,8 @@ Module.register("MMM-NOAA3", {
         var sunset = srss.sunset;
         var utcsunrise = moment.utc(sunrise).toDate();
         var utcsunset = moment.utc(sunset).toDate();
-        var sunrise = config.timeFormat == 12 ? moment(utcsunrise).local().format("h:mm A") : moment(utcsunrise).local().format("HH:mm");
-        var sunset = config.timeFormat == 12 ? moment(utcsunset).local().format("h:mm A") : moment(utcsunset).local().format("HH:mm");
+        var sunrise = config.timeFormat == 12 ? moment(utcsunrise).local().format("h:mm") : moment(utcsunrise).local().format("HH:mm");
+        var sunset = config.timeFormat == 12 ? moment(utcsunset).local().format("h:mm") : moment(utcsunset).local().format("HH:mm");
 		 
 		var nextDiv = document.createElement('div');
 		nextDiv.innerHTML=	
@@ -324,7 +352,11 @@ Module.register("MMM-NOAA3", {
         var done = moment(fun, ["h:mm A"]).format("HH:mm");
         var str1 = moment(sunrise, ["h:mm A"]).format("HH:mm");
         var str2 = moment(sunset, ["h:mm A"]).format("HH:mm");
-		 
+		
+		var ev1= moment().format("HH");
+		var ev2  = moment(srss.sunrise).format("HH");
+		var ev3 =  moment(srss.sunset).format("HH"); 
+	// console.log("Now :"+ev1 + " Rise: "+ ev2+" Set:  "+ev3);	
 		var lastDiv = document.createElement('div');
         var level = this.air.aqius;
       /*this.air.aqius  > 0 && this.air.aqius <= 50 ? this.air.aqius + "<span class='CellComment'>" + this.translate('Excellent') + "</span>": 
@@ -339,20 +371,20 @@ Module.register("MMM-NOAA3", {
   
       <div class="divTableRow">
          <div class="divTableHead">AQI</div>
-         <div class="divTableHead">${(done >= str1 && done <= str2) ? "UV": this.translate("Night")}</div>
+         <div class="divTableHead">${(ev1 >= ev2 && ev1 <= ev3) ? "UV": this.translate("Night")}</div>
          <div class="divTableHead">${this.translate("Wind")}</div>
       </div>
 	   
       <div class="divTableRow">
        <div class="divTableCell">${level}</div>
-         <div class="divTableCell">${(done >= str1 && done <= str2) ? UV : '<img src ='+this.config.moon[this.moon]+' height="27px" width="27px">'}</div>
+         <div class="divTableCell">${(ev1 >= ev2 && ev1 <= ev3) ? UV : '<img src ='+this.config.moon[this.moon]+' height="27px" width="27px">'}</div>
          <div class="divTableCell">${(this.config.lang != 'en') ? wind_kph : wind_mph}</div>
       </div>
    </div>
 </div>`; 
 		 wrapper.appendChild(lastDiv);
 		 
-	///uv moon above///
+	//uv moon above//////////////////////////////////////////////////
 	
 		var forecast = this.current.forecast
         if (forecast != null) {
@@ -427,6 +459,43 @@ Module.register("MMM-NOAA3", {
 
             wrapper.appendChild(ForecastTable);
         }
+		
+//////////ALERT FOR DarkSKY ONLY////////////////////
+					var issue = this.issue;
+		if (typeof issue != 'undefined' || null){
+			var keys = Object.keys(this.issue);
+			if (keys.length > 0) {
+				if (this.activeItem >= keys.length) {
+					this.activeItem = 0;
+				}
+				var issue = this.issue[keys[this.activeItem]];
+
+				var warning = document.createElement("div");
+				warning.classList.add('advise');
+				warning.innerHTML = "Weather Advisory<BR> Type: "+issue.severity;
+				wrapper.appendChild(warning);
+
+				var emer = document.createElement("div");
+				emer.classList.add('warning', 'bright');
+				emer.innerHTML = issue.title + " -- <br>" + issue.description;
+				wrapper.appendChild(emer);
+
+				var area = document.createElement("div");
+				area.classList.add('areas');
+				area.innerHTML = "Areas effected :<BR>";
+				wrapper.appendChild(area);
+
+				var counties = issue.regions;
+				var list = document.createElement("div");
+				list.classList.add('list');
+				for (var i = 0; i < counties.length; i++) {
+					list.innerHTML += counties[i] + ",  ";
+				}
+				wrapper.appendChild(list);
+			}
+		}
+/////////////ALERT END///////////////////////////////////
+		
 		
 		if (this.config.nupdate != false){
         if (config.timeFormat == 12) {
