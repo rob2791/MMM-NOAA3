@@ -365,8 +365,8 @@ Module.register("MMM-NOAA3", {
 	  this.air.aqius > 151 && this.air.aqius <= 200 ? this.air.aqius + "<span class='CellComment'>" + this.translate('Moderately Polluted') + "</span>":
 	  this.air.aqius > 201 && this.air.aqius <= 300 ? this.air.aqius + "<span class='CellComment'>" + this.translate('Heavily Polluted') + "</span>":
 	  this.air.aqius + "<span class='CellComment'>Severely Polluted</span></div>";	*/	
-		lastDiv.innerHTML=
-/*		`<div class="divTable">
+/*		lastDiv.innerHTML=
+		`<div class="divTable">
   <div class="divTableBody">
         <div class="divTableRow">
          <div class="divTableHead">AQI</div>
