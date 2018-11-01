@@ -367,7 +367,7 @@ Module.register("MMM-NOAA3", {
 	  this.air.aqius + "<span class='CellComment'>Severely Polluted</span></div>";	*/	
 		lastDiv.innerHTML=
 		`<div class="divTable">
-   <div class="divTableBody">
+  /* <div class="divTableBody">
   
       <div class="divTableRow">
          <div class="divTableHead">AQI</div>
@@ -380,7 +380,7 @@ Module.register("MMM-NOAA3", {
          <div class="divTableCell">${(ev1 >= ev2 && ev1 <= ev3) ? UV : '<img src ='+this.config.moon[this.moon]+' height="27px" width="27px">'}</div>
          <div class="divTableCell">${(this.config.lang != 'en') ? wind_kph : wind_mph}</div>
       </div>
-   </div>
+   </div>	*/
 </div>`; 
 		 wrapper.appendChild(lastDiv);
 		 
