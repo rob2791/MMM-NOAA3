@@ -379,9 +379,9 @@ Module.register("MMM-NOAA3", {
          <div class="divTableCell">${(this.config.lang != 'en') ? wind_kph : wind_mph}</div>
       </div>
    </div>	
-   */
+   
 </div>`; 
-		 wrapper.appendChild(lastDiv);
+*/		 wrapper.appendChild(lastDiv);
 		 
 	//uv moon above//////////////////////////////////////////////////
 	
