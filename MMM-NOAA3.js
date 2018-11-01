@@ -380,7 +380,7 @@ Module.register("MMM-NOAA3", {
       </div>
    </div>	
    
-</div>`; 
+</div>; 
 */		 wrapper.appendChild(lastDiv);
 		 
 	//uv moon above//////////////////////////////////////////////////
