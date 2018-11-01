@@ -366,21 +366,20 @@ Module.register("MMM-NOAA3", {
 	  this.air.aqius > 201 && this.air.aqius <= 300 ? this.air.aqius + "<span class='CellComment'>" + this.translate('Heavily Polluted') + "</span>":
 	  this.air.aqius + "<span class='CellComment'>Severely Polluted</span></div>";	*/	
 		lastDiv.innerHTML=
-		`<div class="divTable">
-  /* <div class="divTableBody">
-  
-      <div class="divTableRow">
+/*		`<div class="divTable">
+  <div class="divTableBody">
+        <div class="divTableRow">
          <div class="divTableHead">AQI</div>
          <div class="divTableHead">${(ev1 >= ev2 && ev1 <= ev3) ? "UV": this.translate("Night")}</div>
          <div class="divTableHead">${this.translate("Wind")}</div>
-      </div>
-	   
+      </div>  
       <div class="divTableRow">
        <div class="divTableCell">${level}</div>
          <div class="divTableCell">${(ev1 >= ev2 && ev1 <= ev3) ? UV : '<img src ='+this.config.moon[this.moon]+' height="27px" width="27px">'}</div>
          <div class="divTableCell">${(this.config.lang != 'en') ? wind_kph : wind_mph}</div>
       </div>
-   </div>	*/
+   </div>	
+   */
 </div>`; 
 		 wrapper.appendChild(lastDiv);
 		 
